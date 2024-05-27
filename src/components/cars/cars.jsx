@@ -35,7 +35,7 @@ const Cars = () => {
                         <div className="row mb-3">
                             <div className="col-md-3">
                                 <button
-                                    className="btn btn-success"
+                                    className="btn btn-success m-3"
                                     onClick={openModal}>
                                     Open modal
                                 </button>
@@ -48,14 +48,14 @@ const Cars = () => {
                                     }
                                     type="text"
                                     placeholder="Search..."
-                                    className="form-control"
+                                    className="form-control m-3"
                                 />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="row">
-                    <table className="table table-bordered table-hover table-striped my-3 bg-info border-color-info">
+                    <table className="table table-bordered table-hover table-striped my-3 bg-info bordered-color-primary table-responsive">
                         <thead>
                             <tr>
                                 <th>T/R</th>

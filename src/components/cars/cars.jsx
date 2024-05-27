@@ -1,9 +1,12 @@
 import { useState } from "react";
 import UserModal from "../modal";
 import "./cars.css";
+import { NavLink } from "react-router-dom";
 
 const Cars = () => {
-    const [cars, setCars] = useState([]);
+    const [cars, setCars] = useState([
+      {name:"BYD Song +", brand:"BYD",color:"Black",price:"$10000",year:"2020"}
+    ]);
     const [modal, setModal] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -85,6 +88,7 @@ const Cars = () => {
                                                 <button className="btn btn-danger">
                                                     <i className="fa-solid fa-trash"></i>
                                                 </button>
+                                                <NavLink to="/single-car"> <span className="btn btn-primary"><i className="fa-solid fa-circle-info"></i></span></NavLink>
                                             </div>
                                         </td>
                                     </tr>

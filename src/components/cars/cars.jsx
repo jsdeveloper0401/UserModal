@@ -1,17 +1,30 @@
+
 import { useState } from "react";
+import { nanoid } from "nanoid";
 import UserModal from "../modal";
 import "./cars.css";
 import { NavLink } from "react-router-dom";
 
 const Cars = () => {
     const [cars, setCars] = useState([
-      {name:"BYD Song +", brand:"BYD",color:"Black",price:"$10000",year:"2020"}
+        {
+            id: nanoid(),
+            name: "BYD Song +",
+            brand: "BYD",
+            color: "Black",
+            price: "$10000",
+            year: "2020",
+        },
     ]);
     const [modal, setModal] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
 
     const openModal = () => {
         setModal(true);
+    };
+
+    const deleteCar = (id) => {
+        setCars(cars.filter((car) => car.id !== id));
     };
 
     const filteredCars = cars.filter((car) =>
@@ -70,10 +83,10 @@ const Cars = () => {
                         <tbody>
                             {filteredCars.map(
                                 (
-                                    { name, brand, color, price, year },
+                                    { id, name, brand, color, price, year },
                                     index
                                 ) => (
-                                    <tr key={index}>
+                                    <tr key={id}>
                                         <td>{index + 1}</td>
                                         <td>{name}</td>
                                         <td>{brand}</td>
@@ -85,10 +98,18 @@ const Cars = () => {
                                                 <button className="btn btn-warning">
                                                     <i className="fa-regular fa-pen-to-square"></i>
                                                 </button>
-                                                <button className="btn btn-danger">
+                                                <button
+                                                    className="btn btn-danger"
+                                                    onClick={() =>
+                                                        deleteCar(id)
+                                                    }>
                                                     <i className="fa-solid fa-trash"></i>
                                                 </button>
-                                                <NavLink to="/single-car"> <span className="btn btn-primary"><i className="fa-solid fa-circle-info"></i></span></NavLink>
+                                                <NavLink to="/single-car">
+                                                    <span className="btn btn-primary">
+                                                        <i className="fa-solid fa-circle-info"></i>
+                                                    </span>
+                                                </NavLink>
                                             </div>
                                         </td>
                                     </tr>
@@ -103,3 +124,4 @@ const Cars = () => {
 };
 
 export default Cars;
+
